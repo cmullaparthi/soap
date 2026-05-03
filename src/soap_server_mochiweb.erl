@@ -67,9 +67,9 @@ handle(Req, Handler, Options) ->
                 Req:respond({StatusCode, Headers, Resp_body})
         end
     catch
-        Class:Reason ->
-            io:format("Class: ~p, Reason: ~p, Stack: ~p~n", 
-                      [Class, Reason, erlang:get_stacktrace()])
+        Class:Reason:Stacktrace ->
+            io:format("Class: ~p, Reason: ~p, Stack: ~p~n",
+                      [Class, Reason, Stacktrace])
     end.
 
 enrich_req(Req, Soap_req) ->
